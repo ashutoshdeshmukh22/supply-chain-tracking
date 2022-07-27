@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+const path = require('path');
 //---------DATABASE SETUP------------------
 const mongo_uri = 'mongodb://127.0.0.1:27017/supplychaintracking';
 
@@ -28,6 +29,7 @@ app.use('/public', express.static('public'));
 // app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 //-------------------------------------------
+app.set('views', path.join(__dirname, '/views'));
 
 //------------ROUTERS------------------------
 const indexRoutes = require('./routes/index');

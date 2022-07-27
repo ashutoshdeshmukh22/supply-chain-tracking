@@ -22,6 +22,10 @@ router.get('/manufactdash', (req, res) => {
   res.render('manufact');
 });
 
+router.get('/item-manufactdash', (req, res) => {
+  res.render('item-manufact-dash');
+});
+
 //handle login logic
 // ----------> router.post('/login', middleware, callback)
 router.post('/login', (req, res) => {
