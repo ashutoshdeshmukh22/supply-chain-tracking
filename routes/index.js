@@ -3,6 +3,9 @@ const router = express.Router();
 const bp = require('body-parser');
 const qr = require('qrcode');
 
+const passport = require('passport');
+const User = require('../models/user');
+
 // Show login form on homepage
 router.get('/', (req, res) => {
   res.render('login');
@@ -28,15 +31,44 @@ router.get('/item-manufactdash', (req, res) => {
 
 //handle login logic
 // ----------> router.post('/login', middleware, callback)
-router.post('/login', (req, res) => {
-  const email = req.body.email;
-  const pass = req.body.password;
-  if (email == 'manufacturer@gmail.com' && pass == '12345678') {
-    res.redirect('/manufactdash');
-  } else if (email == 'admin@gmail.com' && pass == '12345678') {
-    res.render('dashboard');
-  }
+// router.post('/login', (req, res) => {
+//   const email = req.body.email;
+//   const pass = req.body.password;
+//   if (email == 'manufacturer@gmail.com' && pass == '12345678') {
+//     res.redirect('/manufactdash');
+//   } else if (email == 'admin@gmail.com' && pass == '12345678') {
+//     res.render('dashboard');
+//   }
+// });
+
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+  }),
+  (req, res) => {}
+);
+
+router.post('/register', (req, res) => {
+  var newUser = new User({ username: req.body.username });
+  User.register(newUser, req.body.password, (err, user) => {
+    if (err) {
+      console.log(err);
+      return res.render('register');
+    }
+    passport.authenticate('local')(req, res, () => {
+      res.redirect('/posts');
+    });
+  });
 });
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 
 //logout Logic
 router.get('/logout', (req, res) => {
