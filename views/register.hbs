@@ -88,20 +88,30 @@
               <div class="card-body">
                 <form action="/register" method="POST" role="form text-left">
                   <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon" name="username">
+                    <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon" name="username" required>
                   </div>
                   <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="email">
+                    <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="email" required>
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" name="password">
+                    <label for="role">Choose Your Role</label>
+                      <select name="role" id="role" required>
+                        <option value="Product Manufacturer">Product Manufacturer</option>
+                        <option value="Distributer">Distributer</option>
+                        <option value="Retailer">Retailer</option>
+                        <option value="Packaging Material Manufacturer">Packaging Material Manufacturer</option>
+                        <option value="General User">General User</option>
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" name="password" required>
                   </div>
                   <div class="mb-3">
                   <input class="form-control" type="password" name="confirmpassword" placeholder="Confirm Password" required>
                   </div>
-                    {{#if message}}
+                    {{#if errormsg}}
                     <label class="alert alert-danger">
-                      {{message}}
+                      {{errormsg}}
                     </label>
                     {{/if}}
               
