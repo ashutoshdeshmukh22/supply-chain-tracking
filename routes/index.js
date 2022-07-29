@@ -39,25 +39,25 @@ router.get('login-failed', (req, res) => {
   res.render('login-failed');
 });
 // ----------> router.post('/login', middleware, callback)
-// router.post('/login', (req, res) => {
-//   const email = req.body.email;
-//   const pass = req.body.password;
-//   if (email == 'manufacturer@gmail.com' && pass == '12345678') {
-//     res.redirect('/manufactdash');
-//   } else if (email == 'admin@gmail.com' && pass == '12345678') {
-//     res.render('dashboard');
-//   }
-// });
+router.post('/login', (req, res) => {
+  const email = req.body.email;
+  const pass = req.body.password;
+  if (email == 'manufacturer@gmail.com' && pass == '12345678') {
+    res.redirect('/manufactdash');
+  } else if (email == 'admin@gmail.com' && pass == '12345678') {
+    res.render('dashboard');
+  }
+});
 
 // handle login logic
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/',
-  }),
-  (req, res) => {}
-);
+// router.post(
+//   '/login',
+//   passport.authenticate('local', {
+//     successRedirect: '/dashboard',
+//     failureRedirect: '/',
+//   }),
+//   (req, res) => {}
+// );
 
 router.post('/register', (req, res) => {
   console.log(req.body);
