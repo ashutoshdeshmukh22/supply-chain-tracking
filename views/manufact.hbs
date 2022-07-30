@@ -373,7 +373,7 @@
                       <span class="text-xs">Medium Box</span>
                       <hr class="horizontal dark my-3">
                       <button id="medium" name="boxsize" type="button" class="btn btn-light btn-sm mb-0"
-                        value="medium">Generate</button>
+                        value='{"pname":"Medium Box", "size":"Medium", "height":"10", "width":"25", "weight":"350"}'>Generate</button>
                     </div>
                   </div>
                 </div>
@@ -393,7 +393,7 @@
                       <span class="text-xs">Large Size Box</span>
                       <hr class="horizontal dark my-3">
                       <button id="large" name="boxsize" type="button" class="btn btn-light btn-sm mb-0"
-                        value="large">Generate</button>
+                        value='{"pname":"Large Box", "size":"large", "height":"20", "width":"55", "weight":"600"}'>Generate</button>
                     </div>
                   </div>
                 </div>
@@ -409,7 +409,7 @@
                       <span class="text-xs">Extra Latge Box</span>
                       <hr class="horizontal dark my-3">
                       <button id="exlarge" name="boxsize" type="button" class="btn btn-light btn-sm mb-0"
-                        value="Extra large">Generate</button>
+                        value='{"pname":"Extra Large Box", "size":"Extra Large", "height":"50", "width":"120", "weight":"900"}'>Generate</button>
                     </div>
                   </div>
                 </div>
@@ -444,7 +444,8 @@
                             <h6 class="mb-0 text-sm">TV Box</h6>
                             <p class="mb-0 text-xs">TV Box Size</p>
                           </div>
-                          <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Generate</a>
+                           <button id="tvbox" name="boxsize" type="button" class="btn btn-light btn-sm mb-0 ms-auto"
+                        value='{"pname":"TV Box", "size":"Extra Large", "height":"50", "width":"120", "weight":"1200"}'>Generate</button>
                         </li>
                         <li class="list-group-item border-0 d-flex align-items-center px-0">
                           <div class="avatar">
@@ -457,7 +458,8 @@
                             <h6 class="mb-0 text-sm">AC Box</h6>
                             <p class="mb-0 text-xs">AC Box Size</p>
                           </div>
-                          <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Generate</a>
+                          <button id="acbox" name="boxsize" type="button" class="btn btn-light btn-sm mb-0 ms-auto"
+                        value='{"pname":"AC Box", "size":"Large", "height":"35", "width":"90", "weight":"850"}'>Generate</button>
                         </li>
                       </ul>
                     </div>
@@ -475,7 +477,7 @@
                   <h6 class="mb-0">QR Code</h6>
                 </div>
                 <div class="col-6 text-end">
-                  <button class="btn btn-outline-primary btn-sm mb-0">Print</button>
+                  <button class="btn btn-outline-primary btn-sm mb-0" onclick="printDiv('qrcode')">Print</button>
                 </div>
               </div>
             </div>

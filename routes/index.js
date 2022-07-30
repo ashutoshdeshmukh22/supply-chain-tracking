@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const bp = require('body-parser');
 const qr = require('qrcode');
+const Request = require('../models/request');
 const isEmailValid = require('email-validator');
 const passwordValidator = require('password-validator');
 
 const passport = require('passport');
 const User = require('../models/user');
+const { MongoDriverError } = require('mongodb');
 
 // Show login form on homepage
 router.get('/', (req, res) => {
@@ -23,9 +25,9 @@ router.get('/register', (req, res) => {
 });
 
 // show dashboard
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
-});
+// router.get('/dashboard', (req, res) => {
+//   res.render('dashboard');
+// });
 
 router.get('/manufactdash', (req, res) => {
   res.render('manufact');
@@ -38,6 +40,22 @@ router.get('/item-manufactdash', (req, res) => {
 router.get('login-failed', (req, res) => {
   res.render('login-failed');
 });
+
+// show dashboard
+router.get('/dashboard', (req, res) => {
+  Request.find({}, (err, allrequests) => {
+    if (err) {
+      console.log('Error in find');
+      console.log(err);
+    } else {
+      res.render('dashboard', {
+        requests: allrequests.reverse(),
+      });
+      console.log(allrequests);
+    }
+  });
+});
+
 // ----------> router.post('/login', middleware, callback)
 router.post('/login', (req, res) => {
   const email = req.body.email;
@@ -45,7 +63,7 @@ router.post('/login', (req, res) => {
   if (email == 'manufacturer@gmail.com' && pass == '12345678') {
     res.redirect('/manufactdash');
   } else if (email == 'admin@gmail.com' && pass == '12345678') {
-    res.render('dashboard');
+    res.redirect('/dashboard');
   }
 });
 
