@@ -51,7 +51,7 @@ router.get('/dashboard', (req, res) => {
       res.render('dashboard', {
         requests: allrequests.reverse(),
       });
-      console.log(allrequests);
+      console.log(allrequests[0].mobile);
     }
   });
 });
