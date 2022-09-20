@@ -27,5 +27,14 @@
     "path": "^0.12.7",
     "qrcode": "^1.5.0",
     "supervisor": "^0.12.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashutoshdeshmukh22/supply-chain-tracking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashutoshdeshmukh22/supply-chain-tracking/issues"
+  },
+  "homepage": "https://github.com/ashutoshdeshmukh22/supply-chain-tracking#readme"
 }
